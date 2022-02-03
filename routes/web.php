@@ -1,10 +1,10 @@
 <?php
 
 // Auth
-$router->get( '/auth', 'Services\amoAuthController@auth' );
-$router->get( '/deauth', 'Services\amoAuthController@deauth' );
+$router->get( 'auth', 'Services\amoAuthController@auth' );
+$router->get( 'deauth', 'Services\amoAuthController@deauth' );
 
-$router->get( 'api/test', function () {
+$router->get( 'test', function () {
     return 'qwertyuiop';
 } );
 
