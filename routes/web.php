@@ -1,10 +1,27 @@
 <?php
 
 // Auth
-$router->get( '/api/auth', 'Services\amoAuthController@auth' );
-$router->get( '/api/deauth', 'Services\amoAuthController@deauth' );
+$router->get( '/auth', 'Services\amoAuthController@auth' );
+$router->get( '/deauth', 'Services\amoAuthController@deauth' );
 
 // Webhooks
-$router->post( '/api/changestage', 'LeadController@changeStage' );
+$router->post( '/changestage', 'LeadController@changeStage' );
 
 // Crons
+$router->get(
+    '/changestage',
+
+    [
+        'middleware'  =>  'amoAuth',
+        'uses'        =>  'LeadController@cronChangeStage',
+    ]
+);
+
+$router->get(
+    '/closeleads',
+
+    [
+        'middleware'  =>  'amoAuth',
+        'uses'        =>  'LeadController@cronCloseLeads',
+    ]
+);

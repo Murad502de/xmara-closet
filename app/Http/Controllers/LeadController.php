@@ -11,36 +11,11 @@ use App\Models\changeStage;
 
 class LeadController extends Controller
 {
-    public const STAGE_LOSS         = 143;
-    public const STAGE_SUCCESS      = 142;
-    public const LEADS_COUNT        = 20;
-    public const HERSTELLERKUERZEL  = 352873;
-
-	public function __construct () {}
-
-	public function get ( $id, Request $request )
-	{
-		$lead = new Lead();
-		$crtlead = $lead->get( $id );
-
-		if ( $crtlead )
-		{
-			$crtlead = [
-				'data' => [
-					'id_target_lead' => $crtlead->id_target_lead,
-					'related_lead'   => $crtlead->related_lead,
-				],
-			];
-		}
-		else
-		{
-			$crtlead = [
-				'data' => false,
-			];
-		}
-
-		return $crtlead;
-	}
+    public const STAGE_LOSS                 = 143;
+    public const STAGE_SUCCESS              = 142;
+    public const LEADS_COUNT                = 20;
+    public const LEADS_COUNT_ZUM_SCHLISSEN  = 50;
+    public const HERSTELLERKUERZEL          = 352873;
 
 	public function changeStage ( Request $request )
 	{
@@ -206,6 +181,17 @@ class LeadController extends Controller
                             activeLeadsZumSchlissen müssen registriert werden
                         <br>
                     ';
+
+                    for ( $actLeadIndex = 0; $actLeadIndex < count( $activeLeadsZumSchlissen ); $actLeadIndex++ )
+                    {
+                        echo 'activeLead: ' . $activeLeadsZumSchlissen[ $actLeadIndex ][ 'id' ] . '<br>';
+
+                        Lead::create(
+                            [
+                                'id_lead'  => $activeLeadsZumSchlissen[ $actLeadIndex ][ 'id' ],
+                            ]
+                        );
+                    }
                 }
 			}
 
@@ -213,4 +199,20 @@ class LeadController extends Controller
 			$objChangeStage->deleteLead( $lead_id );
 		}
 	}
+
+    public function cronCloseLeads ()
+    {
+        $account    = new Account();
+		$authData   = $account->getAuthData();
+
+		$amo            = new amoCRM( $authData );
+		$objLead        = new Lead();
+
+		$leads = Lead::take( self::LEADS_COUNT_ZUM_SCHLISSEN )->get();
+
+        foreach ( $leads as $lead )
+        {
+            echo 'das Lead zum schlissen: ' . $lead->id_lead . '<br>';
+        }
+    }
 }

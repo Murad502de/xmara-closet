@@ -9,21 +9,20 @@ class Lead extends Model
 {
 	use HasFactory;
 
-	protected $table = 'leads';
+	protected $table = 'leads_zum_schlissen';
 	protected $fillable = [
-		'id_target_lead',
-		'related_lead'
+		'id_lead',
 	];
 
 
 	public function get ( $id )
-  {
-    return $this->where( 'id_target_lead', $id )->first();
-  }
+    {
+        return $this->where( 'id_target_lead', $id )->first();
+    }
 
-  public function add () {}
+    public function add () {}
 
-  public function deleteWithRelated ( $id )
+    public function deleteWithRelated ( $id )
 	{
 		$lead = $this->where( 'id_target_lead', $id )->first();
 
@@ -40,5 +39,5 @@ class Lead extends Model
 		}
 	}
 
-  public function aktualisieren () {}
+    public function aktualisieren () {}
 }
