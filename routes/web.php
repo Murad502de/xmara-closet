@@ -4,7 +4,7 @@
 $router->get( '/auth', 'Services\amoAuthController@auth' );
 $router->get( '/deauth', 'Services\amoAuthController@deauth' );
 
-$router->get( '/test', function () {
+$router->get( 'api/test', function () {
     return 'qwertyuiop';
 } );
 
