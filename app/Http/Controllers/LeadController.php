@@ -98,7 +98,7 @@ class LeadController extends Controller
 
                 for ( $cfIndex = 0; $cfIndex < count( $hauptLead_custom_fields ); $cfIndex++ )
                 {
-                    if ( ( int ) $hauptLead_custom_fields[ $cfIndex ][ 'id' ] === self::HERSTELLERKUERZEL )
+                    if ( ( int ) $hauptLead_custom_fields[ $cfIndex ][ 'field_id' ] === self::HERSTELLERKUERZEL )
                     {
                         $hauptLeadHerstellerkuerzel = $hauptLead_custom_fields[ $cfIndex ][ 'values' ][ 'value' ];
 
