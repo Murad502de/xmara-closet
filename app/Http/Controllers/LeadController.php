@@ -239,7 +239,7 @@ class LeadController extends Controller
                         {
                             Lead::updateOrCreate(
                                 [
-                                    'id_lead'  => $activeLeadsZumSchlissen[ $actLeadIndex ][ 'id' ],
+                                    'lead_id'  => $activeLeadsZumSchlissen[ $actLeadIndex ][ 'id' ],
                                 ],
                             );
                         }
@@ -265,18 +265,18 @@ class LeadController extends Controller
 
         foreach ( $leads as $lead )
         {
-            echo 'das Lead zum schlissen: ' . $lead->id_lead . '<br>';
+            echo 'das Lead zum schlissen: ' . $lead->lead_id . '<br>';
 
             $amo->updateLead(
                 [
                     [
-                        "id"        => ( int ) $lead->id_lead,
+                        "id"        => ( int ) $lead->lead_id,
                         "status_id" => self::STAGE_LOSS,
                     ]
                 ]
             );
 
-            $objChangeStage->deleteLead( $lead->id_lead );
+            $objChangeStage->deleteLead( $lead->lead_id );
         }
     }
 }
