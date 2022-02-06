@@ -275,7 +275,7 @@ class LeadController extends Controller
                 ]
             );
 
-            $objLead->delete();
+            $lead->delete();
         }
     }
 }
