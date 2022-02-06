@@ -167,10 +167,10 @@ class LeadController extends Controller
                         print_r( $lead_custom_fields );
                         echo '</pre>';
 
-                        if ( !$hauptLead_custom_fields )
+                        if ( !$lead_custom_fields )
                         {
                             // TODO delete lead
-                            die( 'es gibt keine hauptLead_custom_fields bei Herstellerkuerzel pruefen' );
+                            die( 'es gibt keine lead_custom_fields bei Herstellerkuerzel pruefen' );
                         }
 
                         for ( $cfIndex = 0; $cfIndex < count( $lead_custom_fields ); $cfIndex++ )
