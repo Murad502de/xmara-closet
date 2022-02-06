@@ -163,6 +163,10 @@ class LeadController extends Controller
                         $lead_custom_fields         = $hauptLead[ 'body' ][ 'custom_fields_values' ];
                         $hauptLeadHerstellerkuerzel = null;
 
+                        echo 'lead_custom_fields Herstellerkuerzel pruefen<br><pre>';
+                        print_r( $lead_custom_fields );
+                        echo '</pre>';
+
                         for ( $cfIndex = 0; $cfIndex < count( $lead_custom_fields ); $cfIndex++ )
                         {
                             if ( ( int ) $lead_custom_fields[ $cfIndex ][ 'field_id' ] === self::HERSTELLERKUERZEL )
