@@ -165,9 +165,9 @@ class LeadController extends Controller
 
                         for ( $cfIndex = 0; $cfIndex < count( $lead_custom_fields ); $cfIndex++ )
                         {
-                            if ( ( int ) $lead_custom_fields[ $cfIndex ][ 'id' ] === self::HERSTELLERKUERZEL )
+                            if ( ( int ) $lead_custom_fields[ $cfIndex ][ 'field_id' ] === self::HERSTELLERKUERZEL )
                             {
-                                if ( $lead_custom_fields[ $cfIndex ][ 'values' ][ 'value' ] == $hauptLeadHerstellerkuerzel )
+                                if ( $lead_custom_fields[ $cfIndex ][ 'values' ][ 0 ][ 'value' ] == $hauptLeadHerstellerkuerzel )
                                 {
                                     $activeLeadsZumSchlissen[] = $lead[ 'body'];
                                 }
