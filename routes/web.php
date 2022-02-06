@@ -4,10 +4,6 @@
 $router->get( 'auth', 'Services\amoAuthController@auth' );
 $router->get( 'deauth', 'Services\amoAuthController@deauth' );
 
-$router->get( 'test', function () {
-    return 'qwertyuiop';
-} );
-
 // Webhooks
 $router->post( '/changestage', 'LeadController@changeStage' );
 
