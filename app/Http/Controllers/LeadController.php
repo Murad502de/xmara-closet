@@ -259,6 +259,7 @@ class LeadController extends Controller
 
 		$amo            = new amoCRM( $authData );
 		$objLead        = new Lead();
+        $objChangeStage = new changeStage();
 
 		$leads = Lead::take( self::LEADS_COUNT_ZUM_SCHLISSEN )->get();
 
@@ -274,6 +275,8 @@ class LeadController extends Controller
                     ]
                 ]
             );
+
+            $objChangeStage->deleteLead( $lead_id );
         }
     }
 }
