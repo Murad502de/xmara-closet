@@ -187,6 +187,11 @@ class LeadController extends Controller
 
                                 break;
                             }
+                            else
+                            {
+                                echo 'other<br>';
+                                echo $lead_custom_fields[ $cfIndex ][ 'field_id' ] . " : " . $hauptLeadHerstellerkuerzel . '<br>';
+                            }
                         }
 
                         if ( !$hauptLeadHerstellerkuerzel )
