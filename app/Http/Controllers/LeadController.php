@@ -80,6 +80,11 @@ class LeadController extends Controller
                 $hauptLead_custom_fields    = $hauptLead[ 'body' ][ 'custom_fields_values' ];
                 $hauptLeadHerstellerkuerzel = null;
 
+                echo 'hauptLead_custom_fields<br>';
+                echo '<pre>';
+                print_r( $hauptLead_custom_fields );
+                echo '</pre>';
+
                 for ( $cfIndex = 0; $cfIndex < count( $hauptLead_custom_fields ); $cfIndex++ )
                 {
                     if ( ( int ) $hauptLead_custom_fields[ $cfIndex ][ 'id' ] === self::HERSTELLERKUERZEL )
