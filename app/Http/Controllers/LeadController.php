@@ -90,6 +90,12 @@ class LeadController extends Controller
                 print_r( $hauptLead_custom_fields );
                 echo '</pre>';
 
+                if ( !$hauptLead_custom_fields )
+                {
+                    // TODO delete lead
+                    die( 'es gibt keine hauptLead_custom_fields' );
+                }
+
                 for ( $cfIndex = 0; $cfIndex < count( $hauptLead_custom_fields ); $cfIndex++ )
                 {
                     if ( ( int ) $hauptLead_custom_fields[ $cfIndex ][ 'id' ] === self::HERSTELLERKUERZEL )
