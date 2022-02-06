@@ -221,7 +221,7 @@ class LeadController extends Controller
 
                     for ( $actLeadIndex = 0; $actLeadIndex < count( $activeLeadsZumSchlissen ); $actLeadIndex++ )
                     {
-                        echo 'activeLead: ' . $activeLeadsZumSchlissen[ $actLeadIndex ][ 'id' ] . '<br>';
+                        echo 'activeLead: ' . $activeLeadsZumSchlissen[ $actLeadIndex ][ 'name' ] . " : " . $activeLeadsZumSchlissen[ $actLeadIndex ][ 'id' ] . '<br>';
 
                         Lead::create(
                             [
