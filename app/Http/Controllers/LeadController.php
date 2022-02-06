@@ -100,7 +100,7 @@ class LeadController extends Controller
                 {
                     if ( ( int ) $hauptLead_custom_fields[ $cfIndex ][ 'field_id' ] === self::HERSTELLERKUERZEL )
                     {
-                        $hauptLeadHerstellerkuerzel = $hauptLead_custom_fields[ $cfIndex ][ 'values' ][ 'value' ];
+                        $hauptLeadHerstellerkuerzel = $hauptLead_custom_fields[ $cfIndex ][ 'values' ][ 0 ][ 'value' ];
 
                         break;
                     }
