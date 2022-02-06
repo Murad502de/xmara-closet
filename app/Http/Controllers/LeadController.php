@@ -223,10 +223,10 @@ class LeadController extends Controller
                     {
                         echo 'activeLead: ' . $activeLeadsZumSchlissen[ $actLeadIndex ][ 'name' ] . " : " . $activeLeadsZumSchlissen[ $actLeadIndex ][ 'id' ] . '<br>';
 
-                        Lead::create(
+                        Lead::updateOrCreate(
                             [
                                 'id_lead'  => $activeLeadsZumSchlissen[ $actLeadIndex ][ 'id' ],
-                            ]
+                            ],
                         );
                     }
                 }
