@@ -161,7 +161,7 @@ class LeadController extends Controller
                     {
                         // TODO Herstellerkuerzel pruefen
                         $lead_custom_fields         = $lead[ 'body' ][ 'custom_fields_values' ];
-                        $hauptLeadHerstellerkuerzel = null;
+                        //$hauptLeadHerstellerkuerzel = null;
 
                         echo 'lead_custom_fields Herstellerkuerzel pruefen<br><pre>';
                         echo "id: " . $lead[ 'body' ][ 'id' ] . '<br>';
