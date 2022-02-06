@@ -11,7 +11,7 @@ class Lead extends Model
 
 	protected $table = 'leads_zum_schlissen';
 	protected $fillable = [
-		'id_lead',
+		'lead_id',
 	];
 
 
