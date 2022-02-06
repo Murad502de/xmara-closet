@@ -77,6 +77,11 @@ class LeadController extends Controller
                     return response( [ 'hauptLead ist nicht gefunden' ], 404 );
                 }
 
+                echo 'hauptLead<br>';
+                echo '<pre>';
+                print_r( $hauptLead );
+                echo '</pre>';
+
                 $hauptLead_custom_fields    = $hauptLead[ 'body' ][ 'custom_fields_values' ];
                 $hauptLeadHerstellerkuerzel = null;
 
