@@ -54,10 +54,10 @@ class LeadController extends Controller
 
 			if ( $status_id === self::STAGE_SUCCESS )
 			{
-                echo 'leadData aus der Datenbank<br>';
-                echo '<pre>';
-                print_r( $leadData );
-                echo '</pre>';
+                // echo 'leadData aus der Datenbank<br>';
+                // echo '<pre>';
+                // print_r( $leadData );
+                // echo '</pre>';
 
                 $responsible_user_id    = ( int ) $leadData[ 'responsible_user_id' ];
                 $pipeline_id            = ( int ) $leadData[ 'pipeline_id' ];
@@ -77,18 +77,18 @@ class LeadController extends Controller
                     return response( [ 'hauptLead ist nicht gefunden' ], 404 );
                 }
 
-                echo 'hauptLead<br>';
-                echo '<pre>';
-                print_r( $hauptLead );
-                echo '</pre>';
+                // echo 'hauptLead<br>';
+                // echo '<pre>';
+                // print_r( $hauptLead );
+                // echo '</pre>';
 
                 $hauptLead_custom_fields    = $hauptLead[ 'body' ][ 'custom_fields_values' ];
                 $hauptLeadHerstellerkuerzel = null;
 
-                echo 'hauptLead_custom_fields<br>';
-                echo '<pre>';
-                print_r( $hauptLead_custom_fields );
-                echo '</pre>';
+                // echo 'hauptLead_custom_fields<br>';
+                // echo '<pre>';
+                // print_r( $hauptLead_custom_fields );
+                // echo '</pre>';
 
                 if ( !$hauptLead_custom_fields )
                 {
