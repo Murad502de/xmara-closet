@@ -223,11 +223,26 @@ class LeadController extends Controller
                     {
                         echo 'activeLead: ' . $activeLeadsZumSchlissen[ $actLeadIndex ][ 'name' ] . " : " . $activeLeadsZumSchlissen[ $actLeadIndex ][ 'id' ] . '<br>';
 
-                        Lead::updateOrCreate(
-                            [
-                                'id_lead'  => $activeLeadsZumSchlissen[ $actLeadIndex ][ 'id' ],
-                            ],
-                        );
+                        $str = mb_strtolower( $activeLeadsZumSchlissen[ $actLeadIndex ][ 'name' ] );
+
+                        echo '<pre>';
+
+                        var_dump($str);
+
+                        $isMatched = preg_match('/автосделка:.*шкаф.*/i', $str, $matches);
+
+                        var_dump($isMatched, $matches);
+
+                        echo '</pre>';
+
+                        if ( $isMatched )
+                        {
+                            Lead::updateOrCreate(
+                                [
+                                    'id_lead'  => $activeLeadsZumSchlissen[ $actLeadIndex ][ 'id' ],
+                                ],
+                            );
+                        }
                     }
                 }
 			}
