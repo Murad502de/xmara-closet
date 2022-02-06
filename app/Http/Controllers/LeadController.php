@@ -180,6 +180,9 @@ class LeadController extends Controller
                         {
                             if ( ( int ) $lead_custom_fields[ $cfIndex ][ 'field_id' ] === self::HERSTELLERKUERZEL )
                             {
+                                echo 'that<br>';
+                                echo $lead_custom_fields[ $cfIndex ][ 'values' ][ 0 ][ 'value' ] . " : " . $hauptLeadHerstellerkuerzel . '<br>';
+
                                 if ( $lead_custom_fields[ $cfIndex ][ 'values' ][ 0 ][ 'value' ] == $hauptLeadHerstellerkuerzel )
                                 {
                                     $activeLeadsZumSchlissen[] = $lead[ 'body'];
@@ -190,7 +193,7 @@ class LeadController extends Controller
                             else
                             {
                                 echo 'other<br>';
-                                echo $lead_custom_fields[ $cfIndex ][ 'field_id' ] . " : " . $hauptLeadHerstellerkuerzel . '<br>';
+                                echo $lead_custom_fields[ $cfIndex ][ 'values' ][ 0 ][ 'value' ]  . " : " . $hauptLeadHerstellerkuerzel . '<br>';
                             }
                         }
 
