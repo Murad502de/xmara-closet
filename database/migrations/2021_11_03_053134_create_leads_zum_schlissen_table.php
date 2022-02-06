@@ -19,7 +19,7 @@ class CreateLeadsZumSchlissenTable extends Migration
             function ( Blueprint $table )
             {
                 $table->id();
-                $table->string( 'id_lead' );
+                $table->string( 'lead_id' );
                 $table->timestamps();
             }
         );
