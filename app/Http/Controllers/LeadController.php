@@ -265,6 +265,15 @@ class LeadController extends Controller
         foreach ( $leads as $lead )
         {
             echo 'das Lead zum schlissen: ' . $lead->id_lead . '<br>';
+
+            $amo->updateLead(
+                [
+                    [
+                        "id"        => ( int ) $lead->id_lead,
+                        "status_id" => self::STAGE_LOSS,
+                    ]
+                ]
+            );
         }
     }
 }
