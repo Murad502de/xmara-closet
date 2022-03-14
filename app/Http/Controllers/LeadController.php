@@ -66,15 +66,10 @@ class LeadController extends Controller
 
                 if ( $hauptLead[ 'code' ] === 404 || $hauptLead[ 'code' ] === 400 )
                 {
-                    return response(
-                        [ 'Bei der Suche nach einem hauptLead ist ein Fehler in der Serveranfrage aufgetreten' ],
+                    // Leadsdaten aus der Datenbank entfernen (change_stage)
+                    $objChangeStage->deleteLead( $lead_id );
 
-                        $hauptLead[ 'code' ]
-                    );
-                }
-                else if ( $hauptLead[ 'code' ] === 204 )
-                {
-                    return response( [ 'hauptLead ist nicht gefunden' ], 404 );
+                    continue;
                 }
 
                 // echo 'hauptLead<br>';
@@ -92,8 +87,10 @@ class LeadController extends Controller
 
                 if ( !$hauptLead_custom_fields )
                 {
-                    // TODO delete lead
-                    die( 'es gibt keine hauptLead_custom_fields' );
+                    // Leadsdaten aus der Datenbank entfernen (change_stage)
+                    $objChangeStage->deleteLead( $lead_id );
+
+                    continue;
                 }
 
                 for ( $cfIndex = 0; $cfIndex < count( $hauptLead_custom_fields ); $cfIndex++ )
@@ -131,19 +128,22 @@ class LeadController extends Controller
                     }
                 }
 
+                if ( !$mainContactId ) // FIXME
+                {
+                    // Leadsdaten aus der Datenbank entfernen (change_stage)
+                    $objChangeStage->deleteLead( $lead_id );
+
+                    continue;
+                }
+
                 $contact = $amo->findContactById( $mainContactId );
 
                 if ( $contact[ 'code' ] === 404 || $contact[ 'code' ] === 400 )
                 {
-                    return response(
-                        [ 'Bei der Suche nach einem Kontakt ist ein Fehler in der Serveranfrage aufgetreten ' ],
+                    // Leadsdaten aus der Datenbank entfernen (change_stage)
+                    $objChangeStage->deleteLead( $lead_id );
 
-                        $contact[ 'code' ]
-                    );
-                }
-                else if ( $contact[ 'code' ] === 204 )
-                {
-                    return response( [ 'Contact ist nicht gefunden' ], 404 );
+                    continue;
                 }
 
                 $leads                      = $contact[ 'body' ][ '_embedded' ][ 'leads' ];
